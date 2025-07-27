@@ -39,8 +39,8 @@ RUN apt-get update --fix-missing && \
                        ros-humble-navigation2 \ 
                        ros-humble-nav2-bringup \
                        ros-humble-turtlebot3-gazebo \
-                       ros-humble-turtlebot3-messages 
-                    #    ros-humble-turtlebot3-bringup
+                    #    ros-humble-turtlebot3-messages 
+                       ros-humble-turtlebot3-bringup
 
 RUN apt-get -y dist-upgrade
 RUN pip3 install transforms3d
