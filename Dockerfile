@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-FROM ros:foxy
+FROM ros:humble
 
 SHELL ["/bin/bash", "-c"]
 
@@ -32,7 +32,16 @@ RUN apt-get update --fix-missing && \
                        python3-pip \
                        libeigen3-dev \
                        tmux \
-                       ros-foxy-rviz2
+                       ros-humble-rviz2 \
+                       python3-colcon-common-extensions \
+                       python3-rosdep \
+                       ros-humble-slam-toolbox \
+                       ros-humble-navigation2 \ 
+                       ros-humble-nav2-bringup \
+                       ros-humble-turtlebot3-gazebo \
+                       ros-humble-turtlebot3-messages 
+                    #    ros-humble-turtlebot3-bringup
+
 RUN apt-get -y dist-upgrade
 RUN pip3 install transforms3d
 
@@ -42,13 +51,13 @@ RUN cd f1tenth_gym && \
     pip3 install -e .
 
 # ros2 gym bridge
-RUN mkdir -p sim_ws/src/f1tenth_gym_ros
-COPY . /sim_ws/src/f1tenth_gym_ros
-RUN source /opt/ros/foxy/setup.bash && \
-    cd sim_ws/ && \
+RUN mkdir -p ros2_ws/src/f1tenth_gym_ros
+COPY . /ros2_ws/src/f1tenth_gym_ros
+RUN source /opt/ros/humble/setup.bash && \
+    cd ros2_ws/ && \
     apt-get update --fix-missing && \
-    rosdep install -i --from-path src --rosdistro foxy -y && \
+    rosdep install -i --from-path src --rosdistro humble -y && \
     colcon build
 
-WORKDIR '/sim_ws'
+WORKDIR '/ros2_ws'
 ENTRYPOINT ["/bin/bash"]

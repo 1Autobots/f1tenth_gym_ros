@@ -42,15 +42,15 @@ bridge:
     scan_beams: 1080
 
     # map parameters
-    map_path: '/sim_ws/src/f1tenth_gym_ros/maps/levine'
+    map_path: '/ros2_ws/src/f1tenth_gym_ros/maps/track_bw_scaled_inverted'
     map_img_ext: '.png'
 
     # opponent parameters
     num_agent: 1
 
     # ego starting pose on map
-    sx: 0.0
-    sy: 0.0
+    sx: 12.4
+    sy: 8.4
     stheta: 0.0
 
     # opp starting pose on map

@@ -26,7 +26,7 @@ services:
     image: f1tenth_gym_ros
     build: ./
     volumes: 
-      - .:/sim_ws/src/f1tenth_gym_ros
+      - .:/ros2_ws/src/f1tenth_gym_ros
     environment:
       - DISPLAY=novnc:0.0
     networks:
